@@ -13,6 +13,9 @@ Após clonar o repositório, é necessário ir ao diretório raiz do projeto, pe
 
 > É fortemente indicado o uso de ambientes virtuais do tipo [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html).
 
+> python -m venv env
+> env/Scripts/Activate.ps1  
+
 ```
 (env)$ pip install -r requirements.txt
 ```

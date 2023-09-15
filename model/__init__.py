@@ -5,8 +5,9 @@ from sqlalchemy import create_engine
 # importando os elementos definidos no modelo
 from model.base import Base
 from model.cliente import Cliente
-from model.agenda import Agenda
 from model.profissional import Profissional
+from model.agenda import Agenda
+
 
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local)

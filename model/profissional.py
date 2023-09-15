@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Integer, DateTime, Float
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from typing import Union
-
+import json
 from model import Base
 
 
@@ -25,7 +25,4 @@ class Profissional(Base):
         self.crm = crm
 
     def listar_profissionais(self):
-        return self
-
-    def listar_profissional_nome(self, nome):
         return self
