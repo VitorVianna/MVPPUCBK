@@ -60,7 +60,7 @@ def add_profissional():
 
         result = []
         result.append({
-            "valor": profissional.id,
+            "id": profissional.id,
             "nome": profissional.nome,
             "crm": profissional.crm
         })
@@ -102,7 +102,7 @@ def get_profissional():
         result = []
         for profissional in profissionais:
             result.append({
-                "valor": profissional.id,
+                "id": profissional.id,
                 "nome": profissional.nome,
                 "crm": profissional.crm
             })
