@@ -1,8 +1,13 @@
+from flask_openapi3 import OpenAPI, Info, Tag
 from flask import Flask, request, send_from_directory, render_template
 from sqlalchemy.exc import IntegrityError
 from model import Session, Cliente, Agenda, Profissional
 from datetime import datetime
-app = Flask(__name__)
+from flask_cors import CORS
+
+info = Info(title="Minha API", version="1.0.0")
+app = OpenAPI(__name__, info=info)
+CORS(app)
 
 
 @app.route('/get_agenda', methods=['GET'])
