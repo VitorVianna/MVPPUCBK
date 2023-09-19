@@ -1,5 +1,6 @@
 from flask_openapi3 import OpenAPI, Info, Tag
-from flask import Flask, request, send_from_directory, render_template
+from flask import Flask, request, send_from_directory, render_template, redirect
+from flask_swagger_ui import get_swaggerui_blueprint
 from sqlalchemy.exc import IntegrityError
 from model import Session, Cliente, Agenda, Profissional
 from datetime import datetime
@@ -9,8 +10,19 @@ info = Info(title="Minha API", version="1.0.0")
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
+# definindo tags
+home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
+cliente_tag = Tag(name="Cliente", description="Adição, visualização e remoção de clientes à base")
+profissional_tag = Tag(name="Profissional", description="Adição, visualização e remoção de profissionais à base")
+agenda_tag = Tag(name="Consulta", description="Adição, visualização e remoção de consulta à base")
 
-@app.route('/get_agenda', methods=['GET'])
+@app.get('/', tags=[home_tag])
+def home():
+    """Redireciona para /openapi, tela que permite a escolha do estilo de documentação.
+    """
+    return redirect('/openapi')
+
+@app.get('/get_agenda', tags=[agenda_tag])
 def get_agenda():
     session = Session()
     agenda = session.query(Agenda).order_by(Agenda.data_consulta)
@@ -28,7 +40,7 @@ def get_agenda():
             })
         return {"agenda": result}, 200
     
-@app.route('/add_agenda', methods=['POST'])
+@app.post('/add_agenda', tags=[agenda_tag])
 def add_agenda():
     session = Session()
     agenda = Agenda(
@@ -47,7 +59,7 @@ def add_agenda():
         print(str(e))
         return {"Erro": error_msg}, 400
 
-@app.route('/add_profissional', methods=['POST'])
+@app.post('/add_profissional', tags=[profissional_tag])
 def add_profissional():
     session = Session()
     profissional = Profissional(
@@ -72,7 +84,7 @@ def add_profissional():
         print(str(e))
         return {"Erro": error_msg + str(e)}, 400
     
-@app.route('/del_profissional', methods=['DELETE'])
+@app.delete('/del_profissional', tags=[profissional_tag])
 def del_profissional():
     session = Session()
     profissional = session.query(Profissional).filter(Profissional.id == request.form.get("id")).first()
@@ -91,7 +103,7 @@ def del_profissional():
         print(str(e))
         return {"Erro": error_msg + str(e)}, 400
 
-@app.route('/get_profissional', methods=['GET'])
+@app.get('/get_profissional', tags=[profissional_tag])
 def get_profissional():
     session = Session()
     profissionais = session.query(Profissional)
@@ -109,7 +121,7 @@ def get_profissional():
 
         return {"profissionais": result}
     
-@app.route('/add_cliente', methods=['POST'])
+@app.post('/add_cliente', tags=[cliente_tag])
 def add_cliente():
     session = Session()
     cliente = Cliente(
@@ -157,7 +169,7 @@ def add_cliente():
         return {"Erro": error_msg + str(e)}, 400
     
 
-@app.route('/get_cliente', methods=['GET'])
+@app.get('/get_cliente', tags=[cliente_tag])
 def get_cliente():
     session = Session()
     clientes = session.query(Cliente)
@@ -185,9 +197,10 @@ def get_cliente():
 
         return {"clientes": resultClient}, 200
     
-@app.route('/get_cliente_por_cpf/<cpf>', methods=['GET'])
-def get_cliente_por_cpf(cpf):
+@app.get('/get_cliente_por_cpf/', tags=[cliente_tag])
+def get_cliente_por_cpf():
     session = Session()
+    cpf = request.args.get('cpf')
     cliente = session.query(Cliente).filter(Cliente.cpf == cpf).first()
     if not cliente:
         error_msg = "Não Existem Clientes cadastrados"
