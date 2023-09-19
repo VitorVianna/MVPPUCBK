@@ -9,6 +9,12 @@ Com as rotas criadas, é possível:
 3 - Listar Todas e Criar novas Consultas. 
 
 ---
+
+## Melhorias que podem ser implementadas:
+- Edição de Profissionais
+- Edição de Clientes
+- Marcação de Consulta com hora específica, atualmente apenas o dia está sendo enviado para a API.
+
 ## Como executar
 
 Será necessário ter todas as libs python listadas no `requirements.txt` instaladas, é bem simples o processo.
