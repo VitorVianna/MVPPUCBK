@@ -195,6 +195,7 @@ def get_cliente_por_cpf(cpf):
     else:
         resultClient = []
         resultClient.append({
+            "id": cliente.id,
             "nome": cliente.nome,
             "cpf": cliente.cpf,
             "rg": cliente.rg,
