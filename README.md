@@ -46,3 +46,6 @@ automaticamente após uma mudança no código fonte.
 ```
 
 Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
+
+## Demonstração
+Vídeo de demonstração: https://photos.app.goo.gl/y2tJBVRcA6PXHf6p9
