@@ -1,13 +1,13 @@
 # API de Agendamento de Consultas para o hospital HELLPASS
 
-Este pequeno projeto foi desenvolvido como MVP para a Disciplina **Desenvolvimento Full Stack Básico** 
+Este pequeno projeto foi desenvolvido como MVP para a Disciplina **Desenvolvimento Full Stack Básico** & **Arquitetura de Software**
 
 O objetivo foi desenvolver esta API em Python para gerenciar as consultas no hospital.
 Com as rotas criadas, é possível:
 1 - Listar Todos, Adicionar e Excluir Médicos.
 2 - Listar Todos, Listar por CPF e Adicionar novos Clientes.
 3 - Listar Todas e Criar novas Consultas. 
-
+4 - Utilizar Docker.
 ---
 
 ## Melhorias que podem ser implementadas:
@@ -104,3 +104,6 @@ Uma vez executando, para acessar a API, basta abrir o [http://localhost:5000/#/]
 >$ docker rm <CONTAINER ID>
 >```
 >Para mais comandos, veja a [documentação do docker](https://docs.docker.com/engine/reference/run/).
+
+## Demonstração (MVP - Arquitetura de Software)
+Vídeo de demonstração: -- Aguardando link
