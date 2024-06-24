@@ -1,6 +1,6 @@
 # API de Agendamento de Consultas para o hospital HELLPASS
 
-Este pequeno projeto foi desenvolvido como MVP para a Disciplina **Desenvolvimento Full Stack Básico** & **Arquitetura de Software**
+Este pequeno projeto foi desenvolvido como MVP para a Disciplina **Desenvolvimento Full Stack Básico** & **Arquitetura de Software**.
 
 O objetivo foi desenvolver esta API em Python para gerenciar as consultas no hospital.
 Com as rotas criadas, é possível:
